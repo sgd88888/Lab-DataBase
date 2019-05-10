@@ -6,7 +6,7 @@ from follow, users
 where follow.uidfled = users.uids and follow.uids in(
 	select users.uids
 	from users
-	where users.names = 'ÕÅÈı'
+	where users.names = 'ï¿½ï¿½ï¿½ï¿½'
 	)
 order by users.byear desc, users.uids asc
 
@@ -23,7 +23,7 @@ from mblog, users, topday
 where	mblog.uids = users.uids and
 		topday.bid = mblog.bid and
 		users.byear > 2000 and
-		users.city = 'Îäºº'
+		users.city = 'ï¿½äºº'
 
 select sub.uids
 from sub
@@ -34,7 +34,7 @@ select uids, byear, city
 from users
 where byear not between '1970' and '2010'
 
-select city, count(uids) 'ÓÃ»§Êı'
+select city, count(uids) 'ï¿½Ã»ï¿½ï¿½ï¿½'
 from users
 group by city
 
@@ -55,7 +55,7 @@ where	thumb.uids = users.uids and
 group by bid
 having count(bid) > 10
 
-select topday.bid, count(*) as '´ÎÊı'
+select topday.bid, count(*) as 'ï¿½ï¿½ï¿½ï¿½'
 from topday
 where topday.bid in (
 	select bid
@@ -70,12 +70,12 @@ group by topday.bid
 select distinct uids
 from sub, label
 where	sub.lid = label.lid and
-		label.lname in ('ÎÄÑ§','ÒÕÊõ','ÕÜÑ§','ÒôÀÖ')
+		label.lname in ('ï¿½ï¿½Ñ§','ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½Ñ§','ï¿½ï¿½ï¿½ï¿½')
 
 select bid, title, uids, pyear, pmonth, pday
 from mblog
-where	cont like '%×î¶àµØÌúÕ¾%' or
-		cont like '%\_»ªÖĞ¿Æ¼¼´óÑ§%'
+where	cont like '%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾%' or
+		cont like '%\_ï¿½ï¿½ï¿½Ğ¿Æ¼ï¿½ï¿½ï¿½Ñ§%'
 
 select one.uids, two.uids
 from follow one, follow two
