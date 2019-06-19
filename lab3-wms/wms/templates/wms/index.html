@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <title>员工工资管理系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'wms/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'wms/css/cover.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">wms</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="/wms/login">登录</a></li>
+                  <li><a href="https://github.com/dragondriver" target="_blank">MyGithub</a></li>
+                  <li><a href="https://docs.djangoproject.com/zh-hans/2.2/" target="_blank">Django中文文档</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <!-- <h1 class="cover-heading"></h1> -->
+            <p>
+              <a href="/wms/department" class="btn btn-lg btn-default btn-outline">部门管理</a>
+              <a href="/wms/staff" class="btn btn-lg btn-default btn-outline">员工管理</a>
+              <a href="/wms/attendance" class="btn btn-lg btn-default btn-outline">出勤信息管理</a>
+            </p>
+            <p>
+              <a href="/wms/wage" class="btn btn-lg btn-default btn-outline">工资信息管理</a>
+              <a href="/wms/yearending" class="btn btn-lg btn-default btn-outline">员工年终奖</a>
+              <a href="/wms/wage-report" class="btn btn-lg btn-default btn-outline">企业工资报表</a>
+            </p>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://github.com/dragondriver">@dragondriver</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>

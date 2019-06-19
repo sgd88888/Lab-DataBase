@@ -1,0 +1,43 @@
+<html>
+<head>	
+  <meta charset="UTF-8" />
+  {% if create %}	
+    <title>wms-staff-create</title>
+  {% elif update %}
+    <title>wms-staff-update</title>
+  {% endif %}
+</head>
+<!--/************************************************************
+* 注释模板
+**************************************************************-->
+<body>
+
+<div>
+  <a href="/wms/staff">返回</a><br \>
+</div>
+
+<div>
+  {% if create %}	
+  <form action="/wms/staff-create" method="POST">
+  {% elif update %}
+  <form action="/wms/staff-update?wms_scode={{to_update.scode}}" method="POST">
+  {% else %}
+  <form action="/wms/staff" method="GET">
+  {% endif %}
+    {% csrf_token %}
+    {{ staff_form.as_p }}
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+{% if messages %}
+<script>
+    {% for msg in messages %}
+    alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+{% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+{% extends "wms/base.html" %}
+{% block content %}
+    <div class="layui-container">
+        <blockquote class="layui-elem-quote">
+            <h1>部门管理</h1>
+        </blockquote>
+        <p>
+            <form action="/wms/department-search" method="get">
+                <input placeholder="部门名称" name="q" id="q">
+                <input type="submit" class="layui-btn" value="搜索">
+            </form>
+        </p>
+
+        <p>
+            <br />
+        </p>
+
+        <p>
+            <a href="/wms/department-create" class="layui-btn layui-btn-warm">
+                <i class="layui-icon">&#xe654;</i> 添加
+            </a>
+            <a href="/wms/department-report" class="layui-btn">生成报表</a>
+            <a href="/wms/index" class="layui-btn">返回首页</a>
+        </p>
+
+        <table class="layui-table">
+      <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+            <th>部门代码</th>
+            <th>部门名称</th>
+            <th>最低薪资</th>
+            <th>部门人数</th>
+            <th>修改</th>
+            <th>删除</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for each_d in department %}
+            <tr>
+                <td>{{each_d.dcode}}</td>
+                <td>{{each_d.dname}}</td>
+                <td>{{each_d.minimum_wage}}</td>
+                <td>{{each_d.dnumber}}</td>
+                <td>
+                    <a href="/wms/department-update?wms_dcode={{each_d.dcode}}" class="layui-btn layui-btn-normal">
+                        <i class="layui-icon">&#xe642;</i>修改
+                    </a>
+                </td>
+                <td>
+                    <a href="/wms/department-delete?wms_dcode={{each_d.dcode}}" class="layui-btn layui-btn-danger">
+                        <i class="layui-icon">&#xe640;</i>删除
+                    </a>
+                </td>
+            </tr>
+        {%endfor%}
+      </tbody>
+        </table>
+
+        <div>
+            <div id="number_container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+        </div>
+        <br /><br />
+        <div>
+            <div id="minimum_wage_container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+        </div>
+        <br /><br />
+        <div>
+            <div id="department_container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+        </div>
+<script language="JavaScript">
+$(document).ready(function() {  
+    number_list = {{number_list|safe}};
+    minimum_wage_list = {{minimum_wage_list|safe}};
+    dname_list = {{dname_list|safe}};
+    department_list = {{department_list|safe}};
+    element_list = {{element_list|safe}};
+    pie_table_gen('各部门人数对比', 'number share', number_list, '#number_container');
+    pie_table_gen('各部门最低薪资对比', 'minimum_wage share', minimum_wage_list, '#minimum_wage_container');
+    pie_table_gen('来源：@dragondriver', '薪资人数对比分析', '综合对比分析', dname_list, department_list, '#department_container', element_list);
+});
+</script>
+
+    </div>
+{% endblock %}

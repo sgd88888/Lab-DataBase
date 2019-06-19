@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'wms/css/login.css' %}"/>
+</head>
+<body>
+    <div id="login">
+        <h1>Login</h1>
+        <form action="/wms/index" method="POST">
+            <!-- <input type="text" required="required" placeholder="用户名" name="u"></input>
+            <input type="password" required="required" placeholder="密码" name="p"></input> -->
+            {% csrf_token %}
+            <input type="text" required="required" placeholder="用户名" name="wms_name"></input>
+            <input type="password" required="required" placeholder="密码" name="wms_password"></input>
+            <button class="but" type="submit">登录</button>
+        </form>
+    </div>
+</body>
+</html>
+<!-- --------------------- 
+作者：丶KCN 
+来源：CSDN 
+原文：https://blog.csdn.net/Run_the_youth/article/details/50805986 
+版权声明：本文为博主原创文章，转载请附上博文链接！ -->

@@ -1,0 +1,60 @@
+<html>
+<head>	
+	<meta charset="UTF-8" />	
+  <title>wsm-staff</title>
+</head>
+<!--/************************************************************
+* 注释模板
+**************************************************************-->
+<body>
+
+<div>
+    <a href="/wms/index">返回首页</a><br />
+    <a href="/wms/staff-create">添加员工</a><br />
+</div>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>代码</th>
+            <th>名称</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>所属部门代码</th>
+            <th>所属部门名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for each_s in staff %}
+        <tr>
+            <td>{{each_s.scode}}</td>
+            <td>{{each_s.sname}}</td>
+            <td>{{each_s.sgender}}</td>
+            <td>{{each_s.sage}}</td>
+            <td>{{each_s.dcode.dcode}}</td>
+            <td>{{each_s.dcode.dname}}</td>
+            <td>
+                <a href="/wms/staff-update?wms_scode={{each_s.scode}}">修改</a>
+                |
+                <a href="/wms/staff-delete?wms_scode={{each_s.scode}}">删除</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% if messages %}
+<script>
+    {% for msg in messages %}
+    alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>	
+	<meta charset="UTF-8" />	
+  <title>wsm-attendance</title>
+</head>
+<!--/************************************************************
+* 注释模板
+**************************************************************-->
+<body>
+
+<div>
+    <a href="/wms/index">返回首页</a><br />
+    <a href="/wms/attendance-create">添加出勤信息</a><br />
+</div>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>员工代码</th>
+            <th>员工名称</th>
+            <th>年份</th>
+            <th>月份</th>
+            <th>加班数</th>
+            <th>缺勤数</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for each_a_of_s in t_attendance %}
+        <tr>
+            <td>{{each_a_of_s.scode.scode}}</td>
+            <td>{{each_a_of_s.scode.sname}}</td>
+            <td>{{each_a_of_s.ayear}}</td>
+            <td>{{each_a_of_s.amonth}}</td>
+            <td>{{each_a_of_s.overtime_num}}</td>
+            <td>{{each_a_of_s.absent_num}}</td>
+            <td>
+                <a href="/wms/attendance-update?wms_scode={{each_a_of_s.scode.scode}}&wms_ayear={{each_a_of_s.ayear}}&wms_amonth={{each_a_of_s.amonth}}">修改</a>
+                |
+                <a href="/wms/attendance-delete?wms_scode={{each_a_of_s.scode.scode}}&wms_ayear={{each_a_of_s.ayear}}&wms_amonth={{each_a_of_s.amonth}}">删除</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% if messages %}
+<script>
+    {% for msg in messages %}
+    alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+{% endif %}
+
+</body>
+</html>

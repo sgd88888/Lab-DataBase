@@ -1,0 +1,59 @@
+<html>
+<head>	
+	<meta charset="UTF-8" />	
+  <title>wsm-wage</title>
+</head>
+<!--/************************************************************
+* 注释模板
+**************************************************************-->
+<body>
+
+<div>
+    <a href="/wms/index">返回首页</a><br />
+</div>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>员工代码</th>
+            <th>员工名称</th>
+            <th>工资年份</th>
+            <th>工资月份</th>
+            <th>基本工资</th>
+            <th>奖金</th>
+            <th>缺勤扣款</th>
+            <th>应得工资</th>
+            <th>最终工资</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for each_w in t_wage %}
+        <tr>
+            <td>{{each_w.scode.scode}}</td>
+            <td>{{each_w.scode.sname}}</td>
+            <td>{{each_w.wyear}}</td>
+            <td>{{each_w.wmonth}}</td>
+            <td>{{each_w.basic_wage}}</td>
+            <td>{{each_w.bonus}}</td>
+            <td>{{each_w.withhold}}</td>
+            <td>{{each_w.due_wage}}</td>
+            <td>{{each_w.final_wage}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% if messages %}
+<script>
+    {% for msg in messages %}
+    alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+{% endif %}
+
+</body>
+</html>

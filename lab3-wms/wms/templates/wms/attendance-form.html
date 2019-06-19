@@ -1,0 +1,43 @@
+<html>
+<head>	
+  <meta charset="UTF-8" />
+  {% if create %}	
+    <title>wms-attendance-create</title>
+  {% elif update %}
+    <title>wms-attendance-update</title>
+  {% endif %}
+</head>
+<!--/************************************************************
+* 注释模板
+**************************************************************-->
+<body>
+
+<div>
+  <a href="/wms/attendance">返回</a><br />
+</div>
+
+<div>
+  {% if create %}	
+  <form action="/wms/attendance-create" method="POST">
+  {% elif update %}
+  <form action="/wms/attendance-update?wms_scode={{to_update.scode.scode}}&wms_ayear={{to_update.ayear}}&wms_amonth={{to_update.amonth}}" method="POST">
+  {% else %}
+  <form action="/wms/attendance" method="GET">
+  {% endif %}
+    {% csrf_token %}
+    {{ attendance_form.as_p }}
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+{% if messages %}
+<script>
+    {% for msg in messages %}
+    alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+{% endif %}
+
+
+</body>
+</html>

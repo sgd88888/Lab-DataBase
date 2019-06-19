@@ -1,0 +1,52 @@
+<html>
+<head>	
+	<meta charset="UTF-8" />	
+  <title>wsm-yearending-bonus</title>
+</head>
+<!--/************************************************************
+* 注释模板
+**************************************************************-->
+<body>
+
+<div>
+    <a href="/wms/index">返回首页</a><br />
+</div>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>员工代码</th>
+            <th>员工名称</th>
+            <th>工资年份</th>
+            <th>该年总工资</th>
+            <th>年终奖</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for each_yb in t_yb %}
+        <tr>
+            <td>{{each_yb.scode.scode}}</td>
+            <td>{{each_yb.scode.sname}}</td>
+            <td>{{each_yb.year}}</td>
+            <td>{{each_yb.total_amount}}</td>
+            <td>{{each_yb.year_bonus}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% if messages %}
+<script>
+    {% for msg in messages %}
+    alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+{% endif %}
+
+</body>
+</html>
+
