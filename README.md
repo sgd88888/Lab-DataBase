@@ -1,3 +1,12 @@
+## 如何使用
+'''
+安装python3.6及以上
+安装django，pip install django
+安装reportlab，pip install reportlab
+安装完成后，在项目根目录执行python manage.py runserver
+浏览器输入127.0.0.1:8000即可
+'''
+
 ## ER图
 
 ![员工工资管理系统ER图](image/ssm_ER.png "员工工资管理系统ER图")
