@@ -12,13 +12,15 @@
 ```
 
 ## 如何使用
-```
 由于时间仓促，未能将项目依赖打包到虚拟环境venv中，所以需要手动安装依赖，但也非常简单
+
 安装`python3.6`及以上版本
+
 安装项目依赖，在lab3-wms根目录下执行`pip install -r requirements.txt`即可
+
 进入`lab3-wms`根目录执行`python manage.py runserver`运行服务器
+
 在浏览器中输入`http://127.0.0.1:8000/`即可，初始登录用户名为`ljq'，密码为`fuck`
-```
 
 ## ER图
 
